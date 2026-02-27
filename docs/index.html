@@ -13,13 +13,11 @@
         .nav-btn.active { color: #38bdf8; border-bottom-color: #38bdf8; }
         .nav-btn:hover { color: #94a3b8; }
         
-        .section { display: none; animation: fadeIn 0.3s ease-in-out; }
-        .section.active { display: block; }
+        .section { display: none; opacity: 0; transition: opacity 0.3s ease-in-out; }
+        .section.active { display: block; opacity: 1; }
         
         .card { background-color: #1e293b; border-radius: 0.75rem; padding: 1.25rem; border: 1px solid #334155; }
         
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
-
         /* Mobile specific adjustments */
         @media (max-width: 640px) {
             .nav-text { font-size: 0.7rem; margin-top: 2px; }
@@ -119,7 +117,7 @@
     <div class="max-w-5xl mx-auto px-4 pt-20">
         
         <!-- SECTION 1: ACUERDOS (Oficialía Mayor) -->
-        <div id="acuerdos" class="section active">
+        <div id="acuerdos" class="section active" style="display: block;">
             <div class="flex justify-between items-center mb-6">
                 <h2 class="text-2xl font-bold text-white">Reunión Oficial Mayor</h2>
                 <span class="bg-blue-900 text-blue-300 text-xs px-2 py-1 rounded font-mono">27 FEB</span>
@@ -497,12 +495,43 @@
     </div>
 
     <script>
-        // Init Lucide Icons
+        // Init Icons
         lucide.createIcons();
 
-        // Date Display
-        const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-        document.getElementById('dateDisplay').textContent = new Date().toLocaleDateString('es-MX', dateOptions);
+        // Robust Tab Switching
+        function showTab(tabId) {
+            console.log("Switching to tab:", tabId);
+            
+            // 1. Hide all sections
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(el => {
+                el.style.display = 'none';
+                el.classList.remove('active');
+            });
+
+            // 2. Deactivate buttons
+            const btns = document.querySelectorAll('.nav-btn');
+            btns.forEach(el => {
+                el.classList.remove('active');
+                el.classList.remove('text-sky-400');
+            });
+
+            // 3. Show target section
+            const target = document.getElementById(tabId);
+            if (target) {
+                target.style.display = 'block';
+                setTimeout(() => target.classList.add('active'), 10);
+            }
+
+            // 4. Activate target button
+            const btn = document.getElementById('btn-' + tabId);
+            if (btn) btn.classList.add('active');
+        }
+
+        // Init on load
+        document.addEventListener('DOMContentLoaded', () => {
+            showTab('acuerdos');
+        });
 
         // Chart
         const ctx = document.getElementById('budgetChart').getContext('2d');
@@ -530,7 +559,7 @@
         // Modal Logic
         function openModal(id) {
             document.getElementById(id).style.display = "block";
-            document.body.style.overflow = "hidden"; // Prevent scrolling
+            document.body.style.overflow = "hidden"; 
         }
 
         function closeModal(id) {
@@ -538,7 +567,6 @@
             document.body.style.overflow = "auto"; 
         }
 
-        // Close on Escape key
         document.addEventListener('keydown', function(event) {
             if (event.key === "Escape") {
                 const modals = document.getElementsByClassName('modal');
