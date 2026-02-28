@@ -213,6 +213,22 @@
                         <span class="text-2xl">🦞</span>
                     </div>
                 </div>
+
+                <!-- Punto 9 (SAPROJ) -->
+                <div class="card group border-l-4 border-l-red-600 hover:bg-red-900/10 transition-colors" onclick="openModal('modal9')">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <div class="flex items-center gap-2 mb-1">
+                                <span class="badge" style="background:#7f1d1d; color:#fca5a5;">Estratégico</span>
+                                <h3 class="font-bold text-white text-lg">9. Tema SAPROJ</h3>
+                            </div>
+                            <p class="text-slate-400 text-sm">Análisis de Viabilidad y Riesgos.</p>
+                        </div>
+                        <div class="text-right">
+                            <i data-lucide="alert-triangle" class="text-red-500 w-6 h-6"></i>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -488,6 +504,57 @@
                         <li><strong>Liderazgos:</strong> Asistente personal para directivos.</li>
                         <li><strong>Innovación:</strong> Soporte técnico y DevOps automatizado.</li>
                         <li><span class="text-cyan-400 font-bold">Piloto Jueces:</span> Herramienta auxiliar para búsqueda de antecedentes, jurisprudencia y redacción de proyectos de acuerdo.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 9 (SAPROJ) -->
+    <div id="modal9" class="modal" onclick="if(event.target == this) closeModal('modal9')">
+        <div class="modal-content">
+            <div class="close-btn" onclick="closeModal('modal9')">&times;</div>
+            <h2 class="text-xl md:text-2xl font-bold text-white mb-6 pr-10 border-b border-slate-700 pb-2">9. Tema SAPROJ</h2>
+            
+            <div class="space-y-4 text-sm">
+                <!-- PROS -->
+                <div class="bg-slate-800/50 p-4 rounded border-l-4 border-emerald-500">
+                    <h3 class="font-bold text-white mb-2 flex items-center"><i data-lucide="thumbs-up" class="w-4 h-4 mr-2 text-emerald-400"></i> PROS</h3>
+                    <ul class="list-disc list-inside text-slate-300 space-y-1 pl-2">
+                        <li>✅ Validado por equipo <strong>AGS</strong>.</li>
+                    </ul>
+                </div>
+
+                <!-- CONTRAS -->
+                <div class="bg-slate-800/50 p-4 rounded border-l-4 border-red-500">
+                    <h3 class="font-bold text-white mb-2 flex items-center"><i data-lucide="thumbs-down" class="w-4 h-4 mr-2 text-red-400"></i> CONTRAS</h3>
+                    <ul class="list-disc list-inside text-slate-300 space-y-1 pl-2">
+                        <li>⚠️ <strong>Resistencia Interna:</strong> Alta probabilidad de rechazo y sentimientos negativos por parte del <strong>Team Desarrollo</strong>.</li>
+                        <li>⚠️ <strong>Riesgo Reputacional:</strong> Antecedentes mediáticos negativos a la primer búsqueda (desvío de 30 millones de pesos en Yucatán).</li>
+                    </ul>
+                </div>
+
+                <!-- DUDAS -->
+                <div class="bg-slate-800/50 p-4 rounded border-l-4 border-yellow-500">
+                    <h3 class="font-bold text-white mb-2 flex items-center"><i data-lucide="help-circle" class="w-4 h-4 mr-2 text-yellow-400"></i> DUDAS</h3>
+                    <ul class="list-disc list-inside text-slate-300 space-y-1 pl-2">
+                        <li>❓ <strong>Costos e Infraestructura.</strong></li>
+                        <li>❓ <strong>Interoperabilidad:</strong> ¿Cómo se integra con el ecosistema actual? (SAJI, SAGA, PW, Firma E).</li>
+                    </ul>
+                </div>
+
+                <!-- DEFINICIONES -->
+                <div class="bg-slate-900 p-4 rounded border border-slate-700 mt-4">
+                    <h3 class="font-bold text-blue-400 mb-3 flex items-center uppercase tracking-wide text-xs">
+                        <i data-lucide="compass" class="w-4 h-4 mr-2"></i> Definiciones Estratégicas
+                    </h3>
+                    <p class="text-slate-300 mb-2 font-medium">¿Cómo trabajar con ellos bajo estas premisas?</p>
+                    <ul class="grid grid-cols-1 md:grid-cols-2 gap-2 text-xs text-slate-400">
+                        <li class="flex items-center gap-2"><span class="text-emerald-500">✔</span> Ahorro en tiempos.</li>
+                        <li class="flex items-center gap-2"><span class="text-emerald-500">✔</span> Cuidar proceso licitatorio.</li>
+                        <li class="flex items-center gap-2"><span class="text-emerald-500">✔</span> No empalme con equipo interno.</li>
+                        <li class="flex items-center gap-2"><span class="text-emerald-500">✔</span> Plan de respuesta mediática.</li>
+                        <li class="flex items-center gap-2 md:col-span-2"><span class="text-emerald-500">✔</span> Cuidar impacto presupuestal y ROI.</li>
                     </ul>
                 </div>
             </div>
