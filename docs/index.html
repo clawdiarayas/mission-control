@@ -361,6 +361,25 @@
               </div>
             </div>
           </div>
+          <!-- Punto 10 (Mejora Dev Team) -->
+          <div
+            class="card group border-l-4 border-l-indigo-600 hover:bg-indigo-900/10 transition-colors"
+            onclick="openModal('modal10')"
+          >
+            <div class="flex justify-between items-center">
+              <div>
+                <div class="flex items-center gap-2 mb-1">
+                  <h3 class="font-bold text-white text-lg">10. Mejora Dev Team</h3>
+                </div>
+                <p class="text-slate-400 text-sm">
+                  Tabuladores y Estímulos.
+                </p>
+              </div>
+              <div class="text-right">
+                <i class="text-indigo-500 w-6 h-6" data-lucide="users"></i>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <!-- SECTION 2: REDES -->
@@ -1086,6 +1105,77 @@
               <strong>"a destajo"</strong> para mayor control de entregables y
               costos.
             </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal 10 (Mejora Dev Team) -->
+    <div
+      class="modal"
+      id="modal10"
+      onclick="if (event.target == this) closeModal('modal10');"
+    >
+      <div class="modal-content">
+        <div class="close-btn" onclick="closeModal('modal10')">×</div>
+        <h2
+          class="text-xl md:text-2xl font-bold text-white mb-6 pr-10 border-b border-slate-700 pb-2"
+        >
+          10. Mejora Dev Team
+        </h2>
+        <div class="space-y-4 text-sm">
+          <!-- Contexto -->
+          <div
+            class="bg-slate-800 p-4 rounded border border-slate-700"
+          >
+            <h3 class="font-bold text-white mb-2 flex items-center">
+              <i
+                class="w-4 h-4 mr-2 text-indigo-400"
+                data-lucide="info"
+              ></i>
+              Contexto
+            </h3>
+            <p class="text-slate-300 text-sm mb-2">
+              Desde el ingreso al PJ no ha habido incrementos significativos para el equipo de desarrollo, contrastando con el aumento en demanda y responsabilidad.
+            </p>
+            <p class="text-slate-300 text-sm">
+              El acompañamiento en nuevos despliegues ha sido insuficiente (salvo excepción en juzgados hipotecarios).
+            </p>
+          </div>
+
+          <!-- Propuesta -->
+          <div class="bg-indigo-900/20 p-4 rounded border border-indigo-500/30">
+            <h3 class="font-bold text-white mb-3 flex items-center">
+              <i
+                class="w-4 h-4 mr-2 text-indigo-400"
+                data-lucide="trending-up"
+              ></i>
+              Propuesta de Mejora
+            </h3>
+            
+            <div class="mb-4">
+              <h4 class="font-semibold text-indigo-300 text-xs uppercase mb-2">Opción A: Ajuste Tabulador (Mensual Libre)</h4>
+              <ul class="space-y-2">
+                <li class="flex justify-between items-center border-b border-indigo-500/20 pb-1">
+                  <span class="text-slate-300">Senior Dev</span>
+                  <span class="font-bold text-white">$40,000</span>
+                </li>
+                <li class="flex justify-between items-center border-b border-indigo-500/20 pb-1">
+                  <span class="text-slate-300">Junior Dev</span>
+                  <span class="font-bold text-white">$30,000</span>
+                </li>
+                <li class="flex justify-between items-center border-b border-indigo-500/20 pb-1">
+                  <span class="text-slate-300">Nuevo Ingreso</span>
+                  <span class="font-bold text-white">$20,000</span>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 class="font-semibold text-indigo-300 text-xs uppercase mb-2">Opción B: Esquema Alterno</h4>
+              <p class="text-slate-300 text-sm">
+                Implementar programa de estímulos por vía alterna (pago contra resultados/entregables).
+              </p>
+            </div>
           </div>
         </div>
       </div>
