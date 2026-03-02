@@ -272,7 +272,7 @@
                   4. Firma Electrónica
                 </h3>
                 <p class="text-slate-400 text-sm">
-                  Actualización Motor + Seguridad
+                  Pago Trimestral + Actualización
                 </p>
               </div>
               <span class="text-emerald-400 font-bold font-mono text-sm"
@@ -369,22 +369,22 @@
               </div>
             </div>
           </div>
-          <!-- Punto 10 (Mejora Dev Team) -->
+          <!-- Punto 11 (Equipos) -->
           <div
-            class="card group border-l-4 border-l-indigo-600 hover:bg-indigo-900/10 transition-colors"
-            onclick="openModal('modal10')"
+            class="card group border-l-4 border-l-blue-600 hover:bg-blue-900/10 transition-colors"
+            onclick="openModal('modal11')"
           >
             <div class="flex justify-between items-center">
               <div>
                 <div class="flex items-center gap-2 mb-1">
-                  <h3 class="font-bold text-white text-lg">10. Mejora Dev Team</h3>
+                  <h3 class="font-bold text-white text-lg">11. Adquisición Equipos</h3>
                 </div>
                 <p class="text-slate-400 text-sm">
-                  Tabuladores y Estímulos.
+                  Seguimiento con Proveedor.
                 </p>
               </div>
               <div class="text-right">
-                <i class="text-indigo-500 w-6 h-6" data-lucide="users"></i>
+                <i class="text-blue-500 w-6 h-6" data-lucide="monitor"></i>
               </div>
             </div>
           </div>
@@ -837,6 +837,9 @@
             </div>
             <div class="text-3xl font-bold text-emerald-400">$1,867,370.55</div>
             <div class="text-xs text-emerald-500">IVA incluido</div>
+          </div>
+          <div class="text-right">
+             <span class="badge bg-emerald-800 text-emerald-200 px-2 py-1 rounded text-xs font-bold">PAGO TRIMESTRAL</span>
           </div>
         </div>
         <div class="space-y-3 text-sm">
@@ -1291,6 +1294,37 @@
                 Implementar programa de estímulos por vía alterna (pago contra resultados/entregables).
               </p>
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal 11 (Adquisición Equipos) -->
+    <div
+      class="modal"
+      id="modal11"
+      onclick="if (event.target == this) closeModal('modal11');"
+    >
+      <div class="modal-content">
+        <div class="close-btn" onclick="closeModal('modal11')">×</div>
+        <h2
+          class="text-xl md:text-2xl font-bold text-white mb-6 pr-10 border-b border-slate-700 pb-2"
+        >
+          11. Adquisición de Equipos de Cómputo
+        </h2>
+        <div class="space-y-4 text-sm">
+          <div class="bg-slate-800 p-4 rounded border border-slate-700">
+            <h3 class="font-bold text-white mb-2 flex items-center">
+              <i class="w-4 h-4 mr-2 text-blue-400" data-lucide="activity"></i>
+              Acciones Inmediatas
+            </h3>
+            <ul class="list-disc list-inside text-slate-300 space-y-2 pl-2">
+              <li>
+                <strong>Tocar base con proveedor:</strong> Gestionar estatus de entrega/cotización.
+              </li>
+              <li>
+                <strong>Equipamiento:</strong> Laptops y Docks (Vinculado a Puntos 2 y 3).
+              </li>
+            </ul>
           </div>
         </div>
       </div>
