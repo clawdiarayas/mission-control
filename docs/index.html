@@ -1,14 +1,14 @@
-<!doctype html>
+<!DOCTYPE html>
 
 <html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Master Mission Control</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <style>
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Master Mission Control</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
       body {
         background-color: #0f172a;
         color: #e2e8f0;
@@ -141,1216 +141,870 @@
         text-align: right;
       }
     </style>
-  </head>
-  <body class="min-h-screen">
-    <!-- Top Navigation (Sticky) -->
-    <div
-      class="fixed top-0 w-full bg-slate-900/90 backdrop-blur-md border-b border-slate-700 z-50"
-    >
-      <div class="max-w-5xl mx-auto px-4">
-        <div class="flex justify-between items-center h-16">
-          <div class="flex items-center gap-2">
-            <span class="text-2xl">🦞</span>
-            <span class="font-bold text-white tracking-tight"
-              >Clawdia<span class="text-blue-400">OS</span></span
-            >
-          </div>
-          <div class="flex space-x-1">
-            <button
-              class="nav-btn active"
-              id="btn-acuerdos"
-              onclick="showTab('acuerdos')"
-            >
-              <i class="nav-icon w-5 h-5" data-lucide="briefcase"></i>
-              <span class="nav-text text-xs font-medium">Acuerdos</span>
-            </button>
-            <button class="nav-btn" id="btn-redes" onclick="showTab('redes')">
-              <i class="nav-icon w-5 h-5" data-lucide="users"></i>
-              <span class="nav-text text-xs font-medium">Redes</span>
-            </button>
-            <button
-              class="nav-btn"
-              id="btn-casacampo"
-              onclick="showTab('casacampo')"
-            >
-              <i class="nav-icon w-5 h-5" data-lucide="home"></i>
-              <span class="nav-text text-xs font-medium">Casa Campo</span>
-            </button>
-            <button
-              class="nav-btn"
-              id="btn-sistema"
-              onclick="showTab('sistema')"
-            >
-              <i class="nav-icon w-5 h-5" data-lucide="cpu"></i>
-              <span class="nav-text text-xs font-medium">Sistema</span>
-            </button>
-            <button
-              class="nav-btn"
-              id="btn-notas"
-              onclick="showTab('notas')"
-            >
-              <i class="nav-icon w-5 h-5" data-lucide="file-text"></i>
-              <span class="nav-text text-xs font-medium">Notas</span>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="max-w-5xl mx-auto px-4 pt-20">
-      <!-- SECTION 1: ACUERDOS (Oficialía Mayor) -->
-      <div class="section active" id="acuerdos" style="display: block">
-        <div class="flex justify-between items-center mb-6">
-          <h2 class="text-2xl font-bold text-white">Reunión Oficial Mayor</h2>
-          <span
-            class="bg-blue-900 text-blue-300 text-xs px-2 py-1 rounded font-mono"
-            >27 FEB</span
-          >
-        </div>
-        <!-- Resumen Financiero -->
-        <div class="grid grid-cols-2 gap-4 mb-6">
-          <div class="card bg-slate-800 border-l-4 border-l-emerald-500">
-            <div class="text-slate-400 text-xs uppercase font-bold">
+</head>
+<body class="min-h-screen">
+<!-- Top Navigation (Sticky) -->
+<div class="fixed top-0 w-full bg-slate-900/90 backdrop-blur-md border-b border-slate-700 z-50">
+<div class="max-w-5xl mx-auto px-4">
+<div class="flex justify-between items-center h-16">
+<div class="flex items-center gap-2">
+<span class="text-2xl">🦞</span>
+<span class="font-bold text-white tracking-tight">Clawdia<span class="text-blue-400">OS</span></span>
+</div>
+<div class="flex space-x-1">
+<button class="nav-btn active" id="btn-acuerdos" onclick="showTab('acuerdos')">
+<i class="nav-icon w-5 h-5" data-lucide="briefcase"></i>
+<span class="nav-text text-xs font-medium">Acuerdos</span>
+</button>
+<button class="nav-btn" id="btn-redes" onclick="showTab('redes')">
+<i class="nav-icon w-5 h-5" data-lucide="users"></i>
+<span class="nav-text text-xs font-medium">Redes</span>
+</button>
+<button class="nav-btn" id="btn-casacampo" onclick="showTab('casacampo')">
+<i class="nav-icon w-5 h-5" data-lucide="home"></i>
+<span class="nav-text text-xs font-medium">Casa Campo</span>
+</button>
+<button class="nav-btn" id="btn-sistema" onclick="showTab('sistema')">
+<i class="nav-icon w-5 h-5" data-lucide="cpu"></i>
+<span class="nav-text text-xs font-medium">Sistema</span>
+</button>
+<button class="nav-btn" id="btn-notas" onclick="showTab('notas')">
+<i class="nav-icon w-5 h-5" data-lucide="file-text"></i>
+<span class="nav-text text-xs font-medium">Notas</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="max-w-5xl mx-auto px-4 pt-20">
+<!-- SECTION 1: ACUERDOS (Oficialía Mayor) -->
+<div class="section active" id="acuerdos" style="display: block">
+<div class="flex justify-between items-center mb-6">
+<h2 class="text-2xl font-bold text-white">Reunión Oficial Mayor</h2>
+<span class="bg-blue-900 text-blue-300 text-xs px-2 py-1 rounded font-mono">27 FEB</span>
+</div>
+<!-- Resumen Financiero -->
+<div class="grid grid-cols-2 gap-4 mb-6">
+<div class="card bg-slate-800 border-l-4 border-l-emerald-500">
+<div class="text-slate-400 text-xs uppercase font-bold">
               Inversión Total
             </div>
-            <div class="text-2xl font-bold text-white mt-1">$19.67 M</div>
-          </div>
-          <div class="card bg-slate-800 border-l-4 border-l-purple-500">
-            <div class="text-slate-400 text-xs uppercase font-bold">
+<div class="text-2xl font-bold text-white mt-1">$19.67 M</div>
+</div>
+<div class="card bg-slate-800 border-l-4 border-l-purple-500">
+<div class="text-slate-400 text-xs uppercase font-bold">
               Digitalización
             </div>
-            <div class="text-2xl font-bold text-white mt-1">46k Exp.</div>
-          </div>
-        </div>
-        <!-- Lista de Puntos -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          <!-- Punto 1 -->
-          <div
-            class="card group hover:border-blue-500 transition-colors"
-            onclick="openModal('modal1')"
-          >
-            <div class="flex justify-between">
-              <div>
-                <h3 class="font-bold text-white text-lg">
+<div class="text-2xl font-bold text-white mt-1">46k Exp.</div>
+</div>
+</div>
+<!-- Lista de Puntos -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+<!-- Punto 1 -->
+<div class="card group hover:border-blue-500 transition-colors" onclick="openModal('modal1')">
+<div class="flex justify-between">
+<div>
+<h3 class="font-bold text-white text-lg">
                   1. Viáticos Ingenieros
                 </h3>
-                <p class="text-slate-400 text-sm">
+<p class="text-slate-400 text-sm">
                   Saltillo • Kevin y Sebastián
                 </p>
-              </div>
-              <span class="text-yellow-400 font-bold font-mono text-sm"
-                >8 SEM</span
-              >
-            </div>
-          </div>
-          <!-- Punto 2 y 3 -->
-          <div
-            class="card group hover:border-blue-500 transition-colors"
-            onclick="openModal('modal2')"
-          >
-            <div class="flex justify-between">
-              <div>
-                <h3 class="font-bold text-white text-lg">
+</div>
+<span class="text-yellow-400 font-bold font-mono text-sm">8 SEM</span>
+</div>
+</div>
+<!-- Punto 2 y 3 -->
+<div class="card group hover:border-blue-500 transition-colors" onclick="openModal('modal2')">
+<div class="flex justify-between">
+<div>
+<h3 class="font-bold text-white text-lg">
                   2 &amp; 3. Infraestructura
                 </h3>
-                <p class="text-slate-400 text-sm">
+<p class="text-slate-400 text-sm">
                   Laptops DELL + Servidor Apps
                 </p>
-              </div>
-              <span class="text-slate-300 font-bold font-mono text-sm"
-                >~$3.5 M</span
-              >
-            </div>
-          </div>
-          <!-- Punto 4 -->
-          <div
-            class="card group hover:border-blue-500 transition-colors"
-            onclick="openModal('modal4')"
-          >
-            <div class="flex justify-between">
-              <div>
-                <h3 class="font-bold text-white text-lg">
+</div>
+<span class="text-slate-300 font-bold font-mono text-sm">~$3.5 M</span>
+</div>
+</div>
+<!-- Punto 4 -->
+<div class="card group hover:border-blue-500 transition-colors" onclick="openModal('modal4')">
+<div class="flex justify-between">
+<div>
+<h3 class="font-bold text-white text-lg">
                   4. Firma Electrónica
                 </h3>
-                <p class="text-slate-400 text-sm">
+<p class="text-slate-400 text-sm">
                   Pago Trimestral + Actualización
                 </p>
-              </div>
-              <span class="text-emerald-400 font-bold font-mono text-sm"
-                >$1.86 M</span
-              >
-            </div>
-          </div>
-          <!-- Punto 5 -->
-          <div
-            class="card group hover:border-blue-500 transition-colors"
-            onclick="openModal('modal5')"
-          >
-            <div class="flex justify-between">
-              <div>
-                <h3 class="font-bold text-white text-lg">
+</div>
+<span class="text-emerald-400 font-bold font-mono text-sm">$1.86 M</span>
+</div>
+</div>
+<!-- Punto 5 -->
+<div class="card group hover:border-blue-500 transition-colors" onclick="openModal('modal5')">
+<div class="flex justify-between">
+<div>
+<h3 class="font-bold text-white text-lg">
                   5. Digitalización Saltillo
                 </h3>
-                <p class="text-slate-400 text-sm">Grupo Vaspec • 12 Meses</p>
-              </div>
-              <span class="text-purple-400 font-bold font-mono text-sm"
-                >$13.33 M</span
-              >
-            </div>
-          </div>
-          <!-- Punto 6 -->
-          <div
-            class="card group hover:border-blue-500 transition-colors"
-            onclick="openModal('modal6')"
-          >
-            <div class="flex justify-between">
-              <div>
-                <h3 class="font-bold text-white text-lg">
+<p class="text-slate-400 text-sm">Grupo Vaspec • 12 Meses</p>
+</div>
+<span class="text-purple-400 font-bold font-mono text-sm">$13.33 M</span>
+</div>
+</div>
+<!-- Punto 6 -->
+<div class="card group hover:border-blue-500 transition-colors" onclick="openModal('modal6')">
+<div class="flex justify-between">
+<div>
+<h3 class="font-bold text-white text-lg">
                   6. Licencias Endpoint
                 </h3>
-                <p class="text-slate-400 text-sm">
+<p class="text-slate-400 text-sm">
                   1,750 Nodos • FortiEndpoint
                 </p>
-              </div>
-              <span class="text-emerald-400 font-bold font-mono text-sm"
-                >$458 K</span
-              >
-            </div>
-          </div>
-          <!-- Punto 7 -->
-          <div
-            class="card group hover:border-blue-500 transition-colors"
-            onclick="openModal('modal7')"
-          >
-            <div class="flex justify-between">
-              <div>
-                <h3 class="font-bold text-white text-lg">
+</div>
+<span class="text-emerald-400 font-bold font-mono text-sm">$458 K</span>
+</div>
+</div>
+<!-- Punto 7 -->
+<div class="card group hover:border-blue-500 transition-colors" onclick="openModal('modal7')">
+<div class="flex justify-between">
+<div>
+<h3 class="font-bold text-white text-lg">
                   7. Pagos Pendientes
                 </h3>
-                <p class="text-slate-400 text-sm">IPC Services + GMB</p>
-              </div>
-              <span class="text-yellow-400 font-bold font-mono text-sm"
-                >$510 K</span
-              >
-            </div>
-          </div>
-          <!-- Punto 8 -->
-          <div
-            class="card group hover:border-blue-500 transition-colors"
-            onclick="openModal('modal8')"
-          >
-            <div class="flex justify-between items-center">
-              <div>
-                <h3 class="font-bold text-cyan-300 text-lg">
+<p class="text-slate-400 text-sm">IPC Services + GMB</p>
+</div>
+<span class="text-yellow-400 font-bold font-mono text-sm">$510 K</span>
+</div>
+</div>
+<!-- Punto 8 -->
+<div class="card group hover:border-blue-500 transition-colors" onclick="openModal('modal8')">
+<div class="flex justify-between items-center">
+<div>
+<h3 class="font-bold text-cyan-300 text-lg">
                   8. Proyecto IA (Clawdia)
                 </h3>
-                <p class="text-cyan-100/60 text-sm">
+<p class="text-cyan-100/60 text-sm">
                   Piloto Jueces + Innovación
                 </p>
-              </div>
-              <span class="text-2xl">🦞</span>
-            </div>
-          </div>
-          <!-- Punto 9 (SAPROJ) -->
-          <div
-            class="card group hover:border-blue-500 transition-colors"
-            onclick="openModal('modal9')"
-          >
-            <div class="flex justify-between items-center">
-              <div>
-                <div class="flex items-center gap-2 mb-1">
-                  <h3 class="font-bold text-white text-lg">9. Tema SAPROJ</h3>
-                </div>
-                <p class="text-slate-400 text-sm">
+</div>
+<span class="text-2xl">🦞</span>
+</div>
+</div>
+<!-- Punto 9 (SAPROJ) -->
+<div class="card group hover:border-blue-500 transition-colors" onclick="openModal('modal9')">
+<div class="flex justify-between items-center">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<h3 class="font-bold text-white text-lg">9. Tema SAPROJ</h3>
+</div>
+<p class="text-slate-400 text-sm">
                   Análisis de Viabilidad y Riesgos.
                 </p>
-              </div>
-              <div class="text-right">
-                <i class="text-blue-500 w-6 h-6" data-lucide="scale"></i>
-              </div>
-            </div>
-          </div>
-          <!-- Punto 10 (Mejora Dev Team) -->
-          <div
-            class="card group border-l-4 border-l-indigo-600 hover:bg-indigo-900/10 transition-colors"
-            onclick="openModal('modal10')"
-          >
-            <div class="flex justify-between items-center">
-              <div>
-                <div class="flex items-center gap-2 mb-1">
-                  <h3 class="font-bold text-white text-lg">10. Mejora Dev Team</h3>
-                </div>
-                <p class="text-slate-400 text-sm">
+</div>
+<div class="text-right">
+<i class="text-blue-500 w-6 h-6" data-lucide="scale"></i>
+</div>
+</div>
+</div>
+<!-- Punto 10 (Mejora Dev Team) -->
+<div class="card group border-l-4 border-l-indigo-600 hover:bg-indigo-900/10 transition-colors" onclick="openModal('modal10')">
+<div class="flex justify-between items-center">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<h3 class="font-bold text-white text-lg">10. Mejora Dev Team</h3>
+</div>
+<p class="text-slate-400 text-sm">
                   Tabuladores y Estímulos.
                 </p>
-              </div>
-              <div class="text-right">
-                <i class="text-indigo-500 w-6 h-6" data-lucide="users"></i>
-              </div>
-            </div>
-          </div>
-          <!-- Punto 11 (Equipos) -->
-          <div
-            class="card group border-l-4 border-l-blue-600 hover:bg-blue-900/10 transition-colors"
-            onclick="openModal('modal11')"
-          >
-            <div class="flex justify-between items-center">
-              <div>
-                <div class="flex items-center gap-2 mb-1">
-                  <h3 class="font-bold text-white text-lg">11. Adquisición Equipos</h3>
-                </div>
-                <p class="text-slate-400 text-sm">
+</div>
+<div class="text-right">
+<i class="text-indigo-500 w-6 h-6" data-lucide="users"></i>
+</div>
+</div>
+</div>
+<!-- Punto 11 (Equipos) -->
+<div class="card group border-l-4 border-l-blue-600 hover:bg-blue-900/10 transition-colors" onclick="openModal('modal11')">
+<div class="flex justify-between items-center">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<h3 class="font-bold text-white text-lg">11. Adquisición Equipos</h3>
+</div>
+<p class="text-slate-400 text-sm">
                   Seguimiento con Proveedor.
                 </p>
-              </div>
-              <div class="text-right">
-                <i class="text-blue-500 w-6 h-6" data-lucide="monitor"></i>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- SECTION 2: REDES -->
-      <div class="section" id="redes">
-        <h2 class="text-2xl font-bold text-white mb-6">
-          Tablero de Control: Redes
-        </h2>
-        <!-- KPIs -->
-        <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6">
-          <div class="card bg-slate-800 border-l-4 border-l-blue-500">
-            <div class="text-slate-400 text-xs uppercase font-bold">
-              Responsables
-            </div>
-            <div class="text-2xl font-bold text-white mt-1">110</div>
-          </div>
-          <div class="card bg-slate-800 border-l-4 border-l-emerald-500">
-            <div class="text-slate-400 text-xs uppercase font-bold">
-              Cabezas de Red
-            </div>
-            <div class="text-2xl font-bold text-white mt-1">1,459</div>
-          </div>
-          <div
-            class="card bg-slate-800 border-l-4 border-l-amber-500 col-span-2 md:col-span-1"
-          >
-            <div class="text-slate-400 text-xs uppercase font-bold">Amigos</div>
-            <div class="text-2xl font-bold text-white mt-1">12,855</div>
-          </div>
-        </div>
-        <!-- Chart Container -->
-        <div class="card bg-slate-800 mb-6 p-4">
-          <h3 class="text-lg font-bold text-white mb-4">
-            Tendencia de Crecimiento (Amigos)
-          </h3>
-          <div class="h-64 w-full">
-            <canvas id="redesChart"></canvas>
-          </div>
-        </div>
-        <!-- Desglose por Grupo -->
-        <h3
-          class="text-lg font-bold text-white mb-3 mt-6 border-b border-gray-700 pb-1"
-        >
-          Desglose por Región
-        </h3>
-        <div class="grid grid-cols-1 gap-3">
-          <!-- Table Header -->
-          <div
-            class="grid grid-cols-4 text-xs font-bold text-slate-500 uppercase px-4 pb-2 border-b border-slate-700"
-          >
-            <div class="col-span-2">Región</div>
-            <div class="text-center">Cabezas</div>
-            <div class="text-right">Amigos</div>
-          </div>
-          <!-- Rows (Generated dynamically or static for now) -->
-          <div class="bg-slate-800 rounded-lg divide-y divide-slate-700">
-            <div
-              class="grid grid-cols-4 px-4 py-3 items-center hover:bg-slate-700/50 transition-colors"
-            >
-              <div class="col-span-2 font-semibold text-white text-sm">
-                TORREÓN Y SAN PEDRO
-              </div>
-              <div class="text-center text-slate-300 font-mono text-sm">
-                477
-              </div>
-              <div class="text-right text-emerald-400 font-bold text-sm">
-                6,024
-              </div>
-            </div>
-            <div
-              class="grid grid-cols-4 px-4 py-3 items-center hover:bg-slate-700/50 transition-colors"
-            >
-              <div class="col-span-2 font-semibold text-white text-sm">
-                SALTILLO
-              </div>
-              <div class="text-center text-slate-300 font-mono text-sm">
-                476
-              </div>
-              <div class="text-right text-emerald-400 font-bold text-sm">
-                3,174
-              </div>
-            </div>
-            <div
-              class="grid grid-cols-4 px-4 py-3 items-center hover:bg-slate-700/50 transition-colors"
-            >
-              <div class="col-span-2 font-semibold text-white text-sm">
-                CARBONÍFERA
-              </div>
-              <div class="text-center text-slate-300 font-mono text-sm">78</div>
-              <div class="text-right text-emerald-400 font-bold text-sm">
-                1,226
-              </div>
-            </div>
-            <div
-              class="grid grid-cols-4 px-4 py-3 items-center hover:bg-slate-700/50 transition-colors"
-            >
-              <div class="col-span-2 font-semibold text-white text-sm">
-                PIEDRAS NEGRAS
-              </div>
-              <div class="text-center text-slate-300 font-mono text-sm">
-                151
-              </div>
-              <div class="text-right text-emerald-400 font-bold text-sm">
-                1,026
-              </div>
-            </div>
-            <div
-              class="grid grid-cols-4 px-4 py-3 items-center hover:bg-slate-700/50 transition-colors"
-            >
-              <div class="col-span-2 font-semibold text-white text-sm">
-                ACUÑA
-              </div>
-              <div class="text-center text-slate-300 font-mono text-sm">
-                120
-              </div>
-              <div class="text-right text-emerald-400 font-bold text-sm">
-                949
-              </div>
-            </div>
-            <div
-              class="grid grid-cols-4 px-4 py-3 items-center hover:bg-slate-700/50 transition-colors"
-            >
-              <div class="col-span-2 font-semibold text-white text-sm">
-                MONCLOVA
-              </div>
-              <div class="text-center text-slate-300 font-mono text-sm">
-                151
-              </div>
-              <div class="text-right text-emerald-400 font-bold text-sm">
-                445
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Desglose por Distrito Local -->
-        <h3
-          class="text-lg font-bold text-white mb-3 mt-6 border-b border-gray-700 pb-1"
-        >
-          Desglose por Distrito Local
-        </h3>
-        <div class="grid grid-cols-1 gap-3">
-          <!-- Table Header -->
-          <div
-            class="grid grid-cols-4 text-xs font-bold text-slate-500 uppercase px-4 pb-2 border-b border-slate-700"
-          >
-            <div class="col-span-3">Distrito Local / Cabecera</div>
-            <div class="text-right">Amigos</div>
-          </div>
-          <!-- Rows -->
-          <div class="bg-slate-800 rounded-lg divide-y divide-slate-700">
-            <div class="grid grid-cols-4 px-4 py-3 items-center hover:bg-slate-700/50 transition-colors">
-              <div class="col-span-3 font-semibold text-white text-sm">1 <span class="text-slate-400 font-normal ml-2 text-xs uppercase">ACUÑA</span></div>
-              <div class="text-right text-emerald-400 font-bold text-sm">892</div>
-            </div>
-            <div class="grid grid-cols-4 px-4 py-3 items-center hover:bg-slate-700/50 transition-colors">
-              <div class="col-span-3 font-semibold text-white text-sm">2 <span class="text-slate-400 font-normal ml-2 text-xs uppercase">PIEDRAS NEGRAS</span></div>
-              <div class="text-right text-emerald-400 font-bold text-sm">815</div>
-            </div>
-            <div class="grid grid-cols-4 px-4 py-3 items-center hover:bg-slate-700/50 transition-colors">
-              <div class="col-span-3 font-semibold text-white text-sm">3 <span class="text-slate-400 font-normal ml-2 text-xs uppercase">SABINAS</span></div>
-              <div class="text-right text-emerald-400 font-bold text-sm">1,208</div>
-            </div>
-            <div class="grid grid-cols-4 px-4 py-3 items-center hover:bg-slate-700/50 transition-colors">
-              <div class="col-span-3 font-semibold text-white text-sm">4 <span class="text-slate-400 font-normal ml-2 text-xs uppercase">CUATROCIÉNEGAS</span></div>
-              <div class="text-right text-emerald-400 font-bold text-sm">405</div>
-            </div>
-            <div class="grid grid-cols-4 px-4 py-3 items-center hover:bg-slate-700/50 transition-colors">
-              <div class="col-span-3 font-semibold text-white text-sm">5 <span class="text-slate-400 font-normal ml-2 text-xs uppercase">MONCLOVA</span></div>
-              <div class="text-right text-emerald-400 font-bold text-sm">309</div>
-            </div>
-            <div class="grid grid-cols-4 px-4 py-3 items-center hover:bg-slate-700/50 transition-colors">
-              <div class="col-span-3 font-semibold text-white text-sm">6 <span class="text-slate-400 font-normal ml-2 text-xs uppercase">FRONTERA</span></div>
-              <div class="text-right text-emerald-400 font-bold text-sm">221</div>
-            </div>
-            <div class="grid grid-cols-4 px-4 py-3 items-center hover:bg-slate-700/50 transition-colors">
-              <div class="col-span-3 font-semibold text-white text-sm">7 <span class="text-slate-400 font-normal ml-2 text-xs uppercase">MATAMOROS</span></div>
-              <div class="text-right text-emerald-400 font-bold text-sm">487</div>
-            </div>
-            <div class="grid grid-cols-4 px-4 py-3 items-center hover:bg-slate-700/50 transition-colors">
-              <div class="col-span-3 font-semibold text-white text-sm">8 <span class="text-slate-400 font-normal ml-2 text-xs uppercase">TORREÓN</span></div>
-              <div class="text-right text-emerald-400 font-bold text-sm">1,079</div>
-            </div>
-            <div class="grid grid-cols-4 px-4 py-3 items-center hover:bg-slate-700/50 transition-colors">
-              <div class="col-span-3 font-semibold text-white text-sm">9 <span class="text-slate-400 font-normal ml-2 text-xs uppercase">TORREÓN</span></div>
-              <div class="text-right text-emerald-400 font-bold text-sm">1,597</div>
-            </div>
-            <div class="grid grid-cols-4 px-4 py-3 items-center hover:bg-slate-700/50 transition-colors">
-              <div class="col-span-3 font-semibold text-white text-sm">10 <span class="text-slate-400 font-normal ml-2 text-xs uppercase">TORREÓN</span></div>
-              <div class="text-right text-emerald-400 font-bold text-sm">1,460</div>
-            </div>
-            <div class="grid grid-cols-4 px-4 py-3 items-center hover:bg-slate-700/50 transition-colors">
-              <div class="col-span-3 font-semibold text-white text-sm">11 <span class="text-slate-400 font-normal ml-2 text-xs uppercase">TORREÓN</span></div>
-              <div class="text-right text-emerald-400 font-bold text-sm">1,055</div>
-            </div>
-            <div class="grid grid-cols-4 px-4 py-3 items-center hover:bg-slate-700/50 transition-colors">
-              <div class="col-span-3 font-semibold text-white text-sm">12 <span class="text-slate-400 font-normal ml-2 text-xs uppercase">RAMOS ARIZPE</span></div>
-              <div class="text-right text-emerald-400 font-bold text-sm">272</div>
-            </div>
-            <div class="grid grid-cols-4 px-4 py-3 items-center hover:bg-slate-700/50 transition-colors">
-              <div class="col-span-3 font-semibold text-white text-sm">13 <span class="text-slate-400 font-normal ml-2 text-xs uppercase">SALTILLO</span></div>
-              <div class="text-right text-emerald-400 font-bold text-sm">994</div>
-            </div>
-            <div class="grid grid-cols-4 px-4 py-3 items-center hover:bg-slate-700/50 transition-colors">
-              <div class="col-span-3 font-semibold text-white text-sm">14 <span class="text-slate-400 font-normal ml-2 text-xs uppercase">SALTILLO</span></div>
-              <div class="text-right text-emerald-400 font-bold text-sm">689</div>
-            </div>
-            <div class="grid grid-cols-4 px-4 py-3 items-center hover:bg-slate-700/50 transition-colors">
-              <div class="col-span-3 font-semibold text-white text-sm">15 <span class="text-slate-400 font-normal ml-2 text-xs uppercase">SALTILLO</span></div>
-              <div class="text-right text-emerald-400 font-bold text-sm">617</div>
-            </div>
-            <div class="grid grid-cols-4 px-4 py-3 items-center hover:bg-slate-700/50 transition-colors">
-              <div class="col-span-3 font-semibold text-white text-sm">16 <span class="text-slate-400 font-normal ml-2 text-xs uppercase">SALTILLO</span></div>
-              <div class="text-right text-emerald-400 font-bold text-sm">755</div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- SECTION 4: CASA DE CAMPO -->
-      <div class="section" id="casacampo">
-        <div
-          class="flex flex-col items-center justify-center min-h-[50vh] text-center"
-        >
-          <div
-            class="bg-slate-800/50 p-8 rounded-2xl border border-slate-700 max-w-md w-full shadow-2xl"
-          >
-            <div
-              class="w-20 h-20 bg-amber-500/10 rounded-full flex items-center justify-center mx-auto mb-6"
-            >
-              <i class="w-10 h-10 text-amber-500" data-lucide="home"></i>
-            </div>
-            <h2 class="text-2xl font-bold text-white mb-2">
+</div>
+<div class="text-right">
+<i class="text-blue-500 w-6 h-6" data-lucide="monitor"></i>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- SECTION 2: REDES -->
+<div class="section" id="redes">
+<h2 class="text-2xl font-bold text-white mb-6">Reporte de Redes SCORG</h2>
+<div class="text-xs text-slate-500 mb-4 font-mono">Actualizado: 03/03/2026 12:06</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+<div class="card bg-slate-800 border-l-4 border-blue-500">
+<div class="text-slate-400 text-xs uppercase font-bold">Responsables</div>
+<div class="text-2xl font-bold text-white mt-1">112</div>
+</div>
+<div class="card bg-slate-800 border-l-4 border-purple-500">
+<div class="text-slate-400 text-xs uppercase font-bold">Cabezas de Red</div>
+<div class="text-2xl font-bold text-white mt-1">1,560</div>
+</div>
+<div class="card bg-slate-800 border-l-4 border-emerald-500">
+<div class="text-slate-400 text-xs uppercase font-bold">Amigos</div>
+<div class="text-2xl font-bold text-white mt-1">14,060</div>
+</div>
+</div>
+<div class="card overflow-hidden">
+<h3 class="text-lg font-bold text-white mb-4 px-2">Desglose por Grupo</h3>
+<div class="overflow-x-auto">
+<table class="w-full text-sm text-left">
+<thead class="text-xs text-slate-400 uppercase bg-slate-900/50">
+<tr>
+<th class="py-3 px-4 rounded-tl-lg">Grupo / Región</th>
+<th class="py-3 px-4 text-right">Resp.</th>
+<th class="py-3 px-4 text-right">Cabezas</th>
+<th class="py-3 px-4 text-right rounded-tr-lg">Amigos</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border-b border-slate-700 hover:bg-slate-800/50 transition-colors">
+<td class="py-3 px-4 font-medium text-white">TORREÓN Y SAN PEDRO</td>
+<td class="py-3 px-4 text-right text-slate-300">38</td>
+<td class="py-3 px-4 text-right text-slate-300">516</td>
+<td class="py-3 px-4 text-right text-emerald-400 font-bold">6,795</td>
+</tr>
+<tr class="border-b border-slate-700 hover:bg-slate-800/50 transition-colors">
+<td class="py-3 px-4 font-medium text-white">SALTILLO</td>
+<td class="py-3 px-4 text-right text-slate-300">33</td>
+<td class="py-3 px-4 text-right text-slate-300">521</td>
+<td class="py-3 px-4 text-right text-emerald-400 font-bold">3,493</td>
+</tr>
+<tr class="border-b border-slate-700 hover:bg-slate-800/50 transition-colors">
+<td class="py-3 px-4 font-medium text-white">CARBONÍFERA</td>
+<td class="py-3 px-4 text-right text-slate-300">6</td>
+<td class="py-3 px-4 text-right text-slate-300">78</td>
+<td class="py-3 px-4 text-right text-emerald-400 font-bold">1,248</td>
+</tr>
+<tr class="border-b border-slate-700 hover:bg-slate-800/50 transition-colors">
+<td class="py-3 px-4 font-medium text-white">PIEDRAS NEGRAS</td>
+<td class="py-3 px-4 text-right text-slate-300">8</td>
+<td class="py-3 px-4 text-right text-slate-300">168</td>
+<td class="py-3 px-4 text-right text-emerald-400 font-bold">1,098</td>
+</tr>
+<tr class="border-b border-slate-700 hover:bg-slate-800/50 transition-colors">
+<td class="py-3 px-4 font-medium text-white">ACUÑA</td>
+<td class="py-3 px-4 text-right text-slate-300">6</td>
+<td class="py-3 px-4 text-right text-slate-300">120</td>
+<td class="py-3 px-4 text-right text-emerald-400 font-bold">966</td>
+</tr>
+<tr class="border-b border-slate-700 hover:bg-slate-800/50 transition-colors">
+<td class="py-3 px-4 font-medium text-white">MONCLOVA</td>
+<td class="py-3 px-4 text-right text-slate-300">18</td>
+<td class="py-3 px-4 text-right text-slate-300">151</td>
+<td class="py-3 px-4 text-right text-emerald-400 font-bold">449</td>
+</tr>
+<tr class="border-b border-slate-700 hover:bg-slate-800/50 transition-colors">
+<td class="py-3 px-4 font-medium text-white">PARRAS</td>
+<td class="py-3 px-4 text-right text-slate-300">3</td>
+<td class="py-3 px-4 text-right text-slate-300">6</td>
+<td class="py-3 px-4 text-right text-emerald-400 font-bold">11</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- SECTION 4: CASA DE CAMPO -->
+<div class="section" id="casacampo">
+<div class="flex flex-col items-center justify-center min-h-[50vh] text-center">
+<div class="bg-slate-800/50 p-8 rounded-2xl border border-slate-700 max-w-md w-full shadow-2xl">
+<div class="w-20 h-20 bg-amber-500/10 rounded-full flex items-center justify-center mx-auto mb-6">
+<i class="w-10 h-10 text-amber-500" data-lucide="home"></i>
+</div>
+<h2 class="text-2xl font-bold text-white mb-2">
               Proyecto Arcentales
             </h2>
-            <p class="text-slate-400 mb-8">
+<p class="text-slate-400 mb-8">
               El Plan Maestro 2026-2027 ha sido migrado a su propio dashboard
               dedicado para un seguimiento más detallado.
             </p>
-            <a
-              class="block w-full py-4 px-6 bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-500 hover:to-orange-500 text-white font-bold rounded-xl transition-all transform hover:scale-[1.02] shadow-lg flex items-center justify-center gap-2"
-              href="https://clawdiarayas.github.io/arcentales/"
-              target="_blank"
-            >
-              <span>Ver Dashboard Completo</span>
-              <i class="w-5 h-5" data-lucide="arrow-right"></i>
-            </a>
-            <div
-              class="mt-6 flex justify-center gap-4 text-xs text-slate-500 font-mono"
-            >
-              <span>Fase 1: Casa</span>
-              <span>•</span>
-              <span>Fase 2: Alberca</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- SECTION 3: SISTEMA (Moved down) -->
-      <div class="section" id="sistema">
-        <h2 class="text-2xl font-bold text-white mb-6">Estatus del Sistema</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-          <div class="card">
-            <div class="text-slate-400 text-xs uppercase mb-1">
+<a class="block w-full py-4 px-6 bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-500 hover:to-orange-500 text-white font-bold rounded-xl transition-all transform hover:scale-[1.02] shadow-lg flex items-center justify-center gap-2" href="https://clawdiarayas.github.io/arcentales/" target="_blank">
+<span>Ver Dashboard Completo</span>
+<i class="w-5 h-5" data-lucide="arrow-right"></i>
+</a>
+<div class="mt-6 flex justify-center gap-4 text-xs text-slate-500 font-mono">
+<span>Fase 1: Casa</span>
+<span>•</span>
+<span>Fase 2: Alberca</span>
+</div>
+</div>
+</div>
+</div>
+<!-- SECTION 3: SISTEMA (Moved down) -->
+<div class="section" id="sistema">
+<h2 class="text-2xl font-bold text-white mb-6">Estatus del Sistema</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+<div class="card">
+<div class="text-slate-400 text-xs uppercase mb-1">
               Mantenimiento
             </div>
-            <div class="flex items-center gap-2">
-              <div class="w-3 h-3 bg-green-500 rounded-full"></div>
-              <span class="text-white font-bold">Activo (03:00 AM)</span>
-            </div>
-          </div>
-          <div class="card">
-            <div class="text-slate-400 text-xs uppercase mb-1">Respaldos</div>
-            <div class="flex items-center gap-2">
-              <div class="w-3 h-3 bg-green-500 rounded-full"></div>
-              <span class="text-white font-bold">Git Sincronizado</span>
-            </div>
-          </div>
-        </div>
-        <h3 class="text-lg font-bold text-white mb-3">Skills Activas</h3>
-        <div class="grid grid-cols-2 gap-3">
-          <div
-            class="bg-slate-800 p-3 rounded text-sm text-slate-300 border border-slate-700"
-          >
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 bg-green-500 rounded-full"></div>
+<span class="text-white font-bold">Activo (03:00 AM)</span>
+</div>
+</div>
+<div class="card">
+<div class="text-slate-400 text-xs uppercase mb-1">Respaldos</div>
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 bg-green-500 rounded-full"></div>
+<span class="text-white font-bold">Git Sincronizado</span>
+</div>
+</div>
+</div>
+<h3 class="text-lg font-bold text-white mb-3">Skills Activas</h3>
+<div class="grid grid-cols-2 gap-3">
+<div class="bg-slate-800 p-3 rounded text-sm text-slate-300 border border-slate-700">
             ⚖️ justicia-data
           </div>
-          <div
-            class="bg-slate-800 p-3 rounded text-sm text-slate-300 border border-slate-700"
-          >
+<div class="bg-slate-800 p-3 rounded text-sm text-slate-300 border border-slate-700">
             🔍 actores-busqueda
           </div>
-          <div
-            class="bg-slate-800 p-3 rounded text-sm text-slate-300 border border-slate-700"
-          >
+<div class="bg-slate-800 p-3 rounded text-sm text-slate-300 border border-slate-700">
             📊 redes-report
           </div>
-          <div
-            class="bg-slate-800 p-3 rounded text-sm text-slate-300 border border-slate-700"
-          >
+<div class="bg-slate-800 p-3 rounded text-sm text-slate-300 border border-slate-700">
             🛠️ maintenance
           </div>
-        </div>
-      </div>
-      <!-- SECTION 5: NOTAS -->
-      <div class="section" id="notas">
-        <div class="flex justify-between items-center mb-6">
-          <h2 class="text-2xl font-bold text-white">Notas del Día</h2>
-          <span class="bg-indigo-900 text-indigo-300 text-xs px-2 py-1 rounded font-mono">02 MAR</span>
-        </div>
-        
-        <div class="card mb-4 bg-slate-800/80 border-l-4 border-indigo-500">
-          <h3 class="text-lg font-bold text-white mb-3 border-b border-slate-700 pb-2 flex items-center gap-2">
-            <i class="w-5 h-5 text-indigo-400" data-lucide="edit-3"></i>
+</div>
+</div>
+<!-- SECTION 5: NOTAS -->
+<div class="section" id="notas">
+<div class="flex justify-between items-center mb-6">
+<h2 class="text-2xl font-bold text-white">Notas del Día</h2>
+<span class="bg-indigo-900 text-indigo-300 text-xs px-2 py-1 rounded font-mono">02 MAR</span>
+</div>
+<div class="card mb-4 bg-slate-800/80 border-l-4 border-indigo-500">
+<h3 class="text-lg font-bold text-white mb-3 border-b border-slate-700 pb-2 flex items-center gap-2">
+<i class="w-5 h-5 text-indigo-400" data-lucide="edit-3"></i>
             Acuerdo con Oficial Mayor
           </h3>
-          <div class="space-y-4 text-slate-300">
-            <div class="p-3 bg-slate-900/50 rounded border border-slate-700/50">
-              <p class="text-sm italic text-slate-400 mb-2">Espacio reservado para apuntes de la reunión...</p>
-              <ul class="list-disc list-inside space-y-2 text-sm">
-                <li>Adquisición de 250 equipos de cómputo.</li>
-                <li>Tocar base con proveedor para equipos de cómputo.</li>
-                <li>Pago por trimestre firma electrónica.</li>
-                <li>Hacer proceso licitatorio mínimos y máximos para Digitalización.</li>
-                <li>Entrega de SAJI: Julio.</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- MODALS -->
-    <!-- Modal 1 -->
-    <div
-      class="modal"
-      id="modal1"
-      onclick="if (event.target == this) closeModal('modal1');"
-    >
-      <div class="modal-content">
-        <div class="close-btn" onclick="closeModal('modal1')">×</div>
-        <h2
-          class="text-xl md:text-2xl font-bold text-white mb-6 pr-10 border-b border-slate-700 pb-2"
-        >
+<div class="space-y-4 text-slate-300">
+<div class="p-3 bg-slate-900/50 rounded border border-slate-700/50">
+<p class="text-sm italic text-slate-400 mb-2">Espacio reservado para apuntes de la reunión...</p>
+<ul class="list-disc list-inside space-y-2 text-sm">
+<li>Adquisición de 250 equipos de cómputo.</li>
+<li>Tocar base con proveedor para equipos de cómputo.</li>
+<li>Pago por trimestre firma electrónica.</li>
+<li>Hacer proceso licitatorio mínimos y máximos para Digitalización.</li>
+<li>Entrega de SAJI: Julio.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- MODALS -->
+<!-- Modal 1 -->
+<div class="modal" id="modal1" onclick="if (event.target == this) closeModal('modal1');">
+<div class="modal-content">
+<div class="close-btn" onclick="closeModal('modal1')">×</div>
+<h2 class="text-xl md:text-2xl font-bold text-white mb-6 pr-10 border-b border-slate-700 pb-2">
           1. Viáticos Ingenieros (Saltillo)
         </h2>
-        <div class="space-y-4">
-          <div class="detail-row">
-            <span class="detail-label">Personal:</span>
-            <span class="detail-val">Ing. Kevin y Ing. Sebastián</span>
-          </div>
-          <div class="detail-row">
-            <span class="detail-label">Destino:</span>
-            <span class="detail-val">Saltillo, Coahuila</span>
-          </div>
-          <div class="detail-row">
-            <span class="detail-label">Duración:</span>
-            <span class="detail-val text-yellow-400">8 Semanas</span>
-          </div>
-          <div
-            class="bg-slate-800 p-4 rounded text-sm text-slate-300 mt-4 border border-slate-700"
-          >
-            <strong>Justificación:</strong> Refuerzo presencial al equipo de
+<div class="space-y-4">
+<div class="detail-row">
+<span class="detail-label">Personal:</span>
+<span class="detail-val">Ing. Kevin y Ing. Sebastián</span>
+</div>
+<div class="detail-row">
+<span class="detail-label">Destino:</span>
+<span class="detail-val">Saltillo, Coahuila</span>
+</div>
+<div class="detail-row">
+<span class="detail-label">Duración:</span>
+<span class="detail-val text-yellow-400">8 Semanas</span>
+</div>
+<div class="bg-slate-800 p-4 rounded text-sm text-slate-300 mt-4 border border-slate-700">
+<strong>Justificación:</strong> Refuerzo presencial al equipo de
             desarrollo de Saltillo. Estancia prolongada de ingenieros residentes
             en Torreón para asegurar la implementación completa y colaborar con
             el equipo central.
           </div>
-        </div>
-      </div>
-    </div>
-    <!-- Modal 2 -->
-    <div
-      class="modal"
-      id="modal2"
-      onclick="if (event.target == this) closeModal('modal2');"
-    >
-      <div class="modal-content">
-        <div class="close-btn" onclick="closeModal('modal2')">×</div>
-        <h2
-          class="text-xl md:text-2xl font-bold text-white mb-6 pr-10 border-b border-slate-700 pb-2"
-        >
+</div>
+</div>
+</div>
+<!-- Modal 2 -->
+<div class="modal" id="modal2" onclick="if (event.target == this) closeModal('modal2');">
+<div class="modal-content">
+<div class="close-btn" onclick="closeModal('modal2')">×</div>
+<h2 class="text-xl md:text-2xl font-bold text-white mb-6 pr-10 border-b border-slate-700 pb-2">
           2 &amp; 3. Infraestructura y Equipo
         </h2>
-        <div
-          class="bg-blue-900/30 p-4 rounded-lg mb-6 border border-blue-500/30"
-        >
-          <div class="text-sm text-blue-300 font-bold uppercase mb-1">
+<div class="bg-blue-900/30 p-4 rounded-lg mb-6 border border-blue-500/30">
+<div class="text-sm text-blue-300 font-bold uppercase mb-1">
             Inversión Estimada
           </div>
-          <div class="text-3xl font-bold text-blue-400">~$3,500,000.00 MXN</div>
-        </div>
-        <div class="space-y-6">
-          <div>
-            <h3
-              class="text-lg font-semibold text-white mb-2 flex items-center text-sm"
-            >
-              <i class="w-5 h-5 mr-2 text-blue-400" data-lucide="laptop"></i>
+<div class="text-3xl font-bold text-blue-400">~$3,500,000.00 MXN</div>
+</div>
+<div class="space-y-6">
+<div>
+<h3 class="text-lg font-semibold text-white mb-2 flex items-center text-sm">
+<i class="w-5 h-5 mr-2 text-blue-400" data-lucide="laptop"></i>
               Equipamiento Personal
             </h3>
-            <ul
-              class="list-disc list-inside text-slate-300 space-y-1 pl-2 text-sm"
-            >
-              <li>
-                <strong>Laptops DELL:</strong> Equipos de alto rendimiento para
+<ul class="list-disc list-inside text-slate-300 space-y-1 pl-2 text-sm">
+<li>
+<strong>Laptops DELL:</strong> Equipos de alto rendimiento para
                 personal operativo y desarrollo.
               </li>
-              <li>
-                <strong>Docking Stations:</strong> Para estaciones de trabajo
+<li>
+<strong>Docking Stations:</strong> Para estaciones de trabajo
                 fijas/híbridas.
               </li>
-            </ul>
-          </div>
-          <div>
-            <h3
-              class="text-lg font-semibold text-white mb-2 flex items-center text-sm"
-            >
-              <i class="w-5 h-5 mr-2 text-blue-400" data-lucide="server"></i>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-semibold text-white mb-2 flex items-center text-sm">
+<i class="w-5 h-5 mr-2 text-blue-400" data-lucide="server"></i>
               Servidor de Aplicaciones
             </h3>
-            <ul
-              class="list-disc list-inside text-slate-300 space-y-1 pl-2 text-sm"
-            >
-              <li>
-                <strong>Servidor DELL Rack:</strong> Capacidad de procesamiento
+<ul class="list-disc list-inside text-slate-300 space-y-1 pl-2 text-sm">
+<li>
+<strong>Servidor DELL Rack:</strong> Capacidad de procesamiento
                 para nuevas apps.
               </li>
-              <li>
-                <strong>Objetivo:</strong> Centralizar despliegues y asegurar
+<li>
+<strong>Objetivo:</strong> Centralizar despliegues y asegurar
                 disponibilidad de nuevos desarrollos.
               </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Modal 4 -->
-    <div
-      class="modal"
-      id="modal4"
-      onclick="if (event.target == this) closeModal('modal4');"
-    >
-      <div class="modal-content">
-        <div class="close-btn" onclick="closeModal('modal4')">×</div>
-        <h2
-          class="text-xl md:text-2xl font-bold text-white mb-6 pr-10 border-b border-slate-700 pb-2"
-        >
+</ul>
+</div>
+</div>
+</div>
+</div>
+<!-- Modal 4 -->
+<div class="modal" id="modal4" onclick="if (event.target == this) closeModal('modal4');">
+<div class="modal-content">
+<div class="close-btn" onclick="closeModal('modal4')">×</div>
+<h2 class="text-xl md:text-2xl font-bold text-white mb-6 pr-10 border-b border-slate-700 pb-2">
           4. Actualización Firma Electrónica
         </h2>
-        <div
-          class="bg-emerald-900/30 p-4 rounded-lg mb-6 border border-emerald-500/30 flex justify-between items-center"
-        >
-          <div>
-            <div class="text-sm text-emerald-300 font-bold uppercase mb-1">
+<div class="bg-emerald-900/30 p-4 rounded-lg mb-6 border border-emerald-500/30 flex justify-between items-center">
+<div>
+<div class="text-sm text-emerald-300 font-bold uppercase mb-1">
               Costo Total
             </div>
-            <div class="text-3xl font-bold text-emerald-400">$1,867,370.55</div>
-            <div class="text-xs text-emerald-500">IVA incluido</div>
-          </div>
-          <div class="text-right">
-             <span class="badge bg-emerald-800 text-emerald-200 px-2 py-1 rounded text-xs font-bold">PAGO TRIMESTRAL</span>
-          </div>
-        </div>
-        <div class="space-y-3 text-sm">
-          <div class="detail-row">
-            <span class="detail-label">Proveedor:</span>
-            <span class="detail-val"
-              >Aplicaciones para Cajeros y Kioscos, S.C.</span
-            >
-          </div>
-          <h3 class="font-bold text-white mt-4 mb-2">Desglose de Fases:</h3>
-          <div class="grid grid-cols-1 gap-2">
-            <div class="bg-slate-800 p-3 rounded border border-slate-700">
-              <div class="flex justify-between font-bold text-emerald-300 mb-1">
-                <span>Fase 1</span> <span>$538,126.67 + IVA</span>
-              </div>
-              <ul class="list-disc list-inside text-slate-400 text-xs">
-                <li>Actualización Logos y Evidencia Criptográfica (OCSP).</li>
-                <li>Migración inicial BD.</li>
-                <li>Seguridad Cloudflare Pro (WAF/DDoS).</li>
-              </ul>
-            </div>
-            <div class="bg-slate-800 p-3 rounded border border-slate-700">
-              <div class="flex justify-between font-bold text-emerald-300 mb-1">
-                <span>Fase 2</span> <span>$1,071,675.53 + IVA</span>
-              </div>
-              <ul class="list-disc list-inside text-slate-400 text-xs">
-                <li>Alta Disponibilidad (Cluster Tomcat 6-8 nodos).</li>
-                <li>Migración final a PostgreSQL 18.0.</li>
-                <li>APIs RESTful y Web Services.</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Modal 5 -->
-    <div
-      class="modal"
-      id="modal5"
-      onclick="if (event.target == this) closeModal('modal5');"
-    >
-      <div class="modal-content">
-        <div class="close-btn" onclick="closeModal('modal5')">×</div>
-        <h2
-          class="text-xl md:text-2xl font-bold text-white mb-6 pr-10 border-b border-slate-700 pb-2"
-        >
+<div class="text-3xl font-bold text-emerald-400">$1,867,370.55</div>
+<div class="text-xs text-emerald-500">IVA incluido</div>
+</div>
+<div class="text-right">
+<span class="badge bg-emerald-800 text-emerald-200 px-2 py-1 rounded text-xs font-bold">PAGO TRIMESTRAL</span>
+</div>
+</div>
+<div class="space-y-3 text-sm">
+<div class="detail-row">
+<span class="detail-label">Proveedor:</span>
+<span class="detail-val">Aplicaciones para Cajeros y Kioscos, S.C.</span>
+</div>
+<h3 class="font-bold text-white mt-4 mb-2">Desglose de Fases:</h3>
+<div class="grid grid-cols-1 gap-2">
+<div class="bg-slate-800 p-3 rounded border border-slate-700">
+<div class="flex justify-between font-bold text-emerald-300 mb-1">
+<span>Fase 1</span> <span>$538,126.67 + IVA</span>
+</div>
+<ul class="list-disc list-inside text-slate-400 text-xs">
+<li>Actualización Logos y Evidencia Criptográfica (OCSP).</li>
+<li>Migración inicial BD.</li>
+<li>Seguridad Cloudflare Pro (WAF/DDoS).</li>
+</ul>
+</div>
+<div class="bg-slate-800 p-3 rounded border border-slate-700">
+<div class="flex justify-between font-bold text-emerald-300 mb-1">
+<span>Fase 2</span> <span>$1,071,675.53 + IVA</span>
+</div>
+<ul class="list-disc list-inside text-slate-400 text-xs">
+<li>Alta Disponibilidad (Cluster Tomcat 6-8 nodos).</li>
+<li>Migración final a PostgreSQL 18.0.</li>
+<li>APIs RESTful y Web Services.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Modal 5 -->
+<div class="modal" id="modal5" onclick="if (event.target == this) closeModal('modal5');">
+<div class="modal-content">
+<div class="close-btn" onclick="closeModal('modal5')">×</div>
+<h2 class="text-xl md:text-2xl font-bold text-white mb-6 pr-10 border-b border-slate-700 pb-2">
           5. Proyecto Digitalización (Saltillo)
         </h2>
-        <div
-          class="bg-purple-900/30 p-4 rounded-lg mb-6 border border-purple-500/30"
-        >
-          <div class="text-sm text-purple-300 font-bold uppercase mb-1">
+<div class="bg-purple-900/30 p-4 rounded-lg mb-6 border border-purple-500/30">
+<div class="text-sm text-purple-300 font-bold uppercase mb-1">
             Costo Total
           </div>
-          <div class="text-3xl font-bold text-purple-400">$13,330,167.84</div>
-          <div class="text-xs text-purple-500">IVA incluido</div>
-        </div>
-        <div class="space-y-6">
-          <div>
-            <h3 class="text-lg font-semibold text-white mb-3">
+<div class="text-3xl font-bold text-purple-400">$13,330,167.84</div>
+<div class="text-xs text-purple-500">IVA incluido</div>
+</div>
+<div class="space-y-6">
+<div>
+<h3 class="text-lg font-semibold text-white mb-3">
               📦 Alcance del Servicio
             </h3>
-            <div class="space-y-2 text-sm">
-              <div class="detail-row">
-                <span class="detail-label">Proveedor:</span>
-                <span class="detail-val">Grupo Vaspec S.A. de C.V.</span>
-              </div>
-              <div class="detail-row">
-                <span class="detail-label">Volumen:</span>
-                <span class="detail-val">46,058 Expedientes</span>
-              </div>
-              <div class="detail-row">
-                <span class="detail-label">Imágenes:</span>
-                <span class="detail-val">~10,363,089 (Fojas doble cara)</span>
-              </div>
-              <div class="detail-row">
-                <span class="detail-label">Modalidad:</span>
-                <span class="detail-val">Servicio In Situ (12 Meses)</span>
-              </div>
-              <div class="detail-row">
-                <span class="detail-label">Entregables:</span>
-                <span class="detail-val"
-                  >OCR, Indexación, Gestor Documental.</span
-                >
-              </div>
-            </div>
-          </div>
-          <div class="bg-slate-800/80 p-4 rounded-lg border border-slate-600">
-            <h3
-              class="text-sm font-bold text-white mb-2 flex items-center uppercase tracking-wide"
-            >
-              <i class="w-4 h-4 mr-2 text-blue-400" data-lucide="cloud"></i>
+<div class="space-y-2 text-sm">
+<div class="detail-row">
+<span class="detail-label">Proveedor:</span>
+<span class="detail-val">Grupo Vaspec S.A. de C.V.</span>
+</div>
+<div class="detail-row">
+<span class="detail-label">Volumen:</span>
+<span class="detail-val">46,058 Expedientes</span>
+</div>
+<div class="detail-row">
+<span class="detail-label">Imágenes:</span>
+<span class="detail-val">~10,363,089 (Fojas doble cara)</span>
+</div>
+<div class="detail-row">
+<span class="detail-label">Modalidad:</span>
+<span class="detail-val">Servicio In Situ (12 Meses)</span>
+</div>
+<div class="detail-row">
+<span class="detail-label">Entregables:</span>
+<span class="detail-val">OCR, Indexación, Gestor Documental.</span>
+</div>
+</div>
+</div>
+<div class="bg-slate-800/80 p-4 rounded-lg border border-slate-600">
+<h3 class="text-sm font-bold text-white mb-2 flex items-center uppercase tracking-wide">
+<i class="w-4 h-4 mr-2 text-blue-400" data-lucide="cloud"></i>
               Anexo: Costos Operativos Cloud
             </h3>
-            <p class="text-xs text-slate-400 mb-3">
+<p class="text-xs text-slate-400 mb-3">
               Estimación de almacenamiento mensual (1.5 TB + 750GB
               Transferencia):
             </p>
-            <div class="grid grid-cols-2 gap-4 text-sm">
-              <div class="border-r border-slate-600 pr-4">
-                <div class="text-slate-400 text-xs">Escenario Estándar</div>
-                <div class="font-bold text-white text-lg">~$2,070 MXN</div>
-                <div class="text-xs text-slate-500">Mensual</div>
-              </div>
-              <div class="pl-2">
-                <div class="text-slate-400 text-xs">Con Réplica</div>
-                <div class="font-bold text-white text-lg">~$2,810 MXN</div>
-                <div class="text-xs text-slate-500">Mensual</div>
-              </div>
-            </div>
-            <div
-              class="mt-3 text-xs text-emerald-400 font-semibold bg-emerald-900/20 p-2 rounded"
-            >
+<div class="grid grid-cols-2 gap-4 text-sm">
+<div class="border-r border-slate-600 pr-4">
+<div class="text-slate-400 text-xs">Escenario Estándar</div>
+<div class="font-bold text-white text-lg">~$2,070 MXN</div>
+<div class="text-xs text-slate-500">Mensual</div>
+</div>
+<div class="pl-2">
+<div class="text-slate-400 text-xs">Con Réplica</div>
+<div class="font-bold text-white text-lg">~$2,810 MXN</div>
+<div class="text-xs text-slate-500">Mensual</div>
+</div>
+</div>
+<div class="mt-3 text-xs text-emerald-400 font-semibold bg-emerald-900/20 p-2 rounded">
               💡 Impacto Financiero: El costo anual de nube (&lt; $34k)
               representa menos del 0.3% de la inversión de digitalización.
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Modal 6 -->
-    <div
-      class="modal"
-      id="modal6"
-      onclick="if (event.target == this) closeModal('modal6');"
-    >
-      <div class="modal-content">
-        <div class="close-btn" onclick="closeModal('modal6')">×</div>
-        <h2
-          class="text-xl md:text-2xl font-bold text-white mb-6 pr-10 border-b border-slate-700 pb-2"
-        >
+</div>
+</div>
+</div>
+</div>
+<!-- Modal 6 -->
+<div class="modal" id="modal6" onclick="if (event.target == this) closeModal('modal6');">
+<div class="modal-content">
+<div class="close-btn" onclick="closeModal('modal6')">×</div>
+<h2 class="text-xl md:text-2xl font-bold text-white mb-6 pr-10 border-b border-slate-700 pb-2">
           6. Licenciamiento Endpoint
         </h2>
-        <div
-          class="bg-emerald-900/30 p-4 rounded-lg mb-6 border border-emerald-500/30"
-        >
-          <div class="text-sm text-emerald-300 font-bold uppercase mb-1">
+<div class="bg-emerald-900/30 p-4 rounded-lg mb-6 border border-emerald-500/30">
+<div class="text-sm text-emerald-300 font-bold uppercase mb-1">
             Costo Total
           </div>
-          <div class="text-3xl font-bold text-emerald-400">$458,353.70</div>
-          <div class="text-xs text-emerald-500">IVA incluido</div>
-        </div>
-        <div class="space-y-2 text-sm">
-          <div class="detail-row">
-            <span class="detail-label">Proveedor:</span>
-            <span class="detail-val">BITS Desarrollo e Ingeniería IT</span>
-          </div>
-          <div class="detail-row">
-            <span class="detail-label">Producto:</span>
-            <span class="detail-val">FortiEndpoint Prevent (1 año)</span>
-          </div>
-          <div class="detail-row">
-            <span class="detail-label">Cantidad:</span>
-            <span class="detail-val">1,750 Licencias</span>
-          </div>
-          <div class="detail-row">
-            <span class="detail-label">Costo Unitario:</span>
-            <span class="detail-val">~$225.79 MXN + IVA</span>
-          </div>
-          <div class="detail-row">
-            <span class="detail-label">Vigencia:</span>
-            <span class="detail-val">Anual</span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Modal 7 -->
-    <div
-      class="modal"
-      id="modal7"
-      onclick="if (event.target == this) closeModal('modal7');"
-    >
-      <div class="modal-content">
-        <div class="close-btn" onclick="closeModal('modal7')">×</div>
-        <h2
-          class="text-xl md:text-2xl font-bold text-white mb-6 pr-10 border-b border-slate-700 pb-2"
-        >
+<div class="text-3xl font-bold text-emerald-400">$458,353.70</div>
+<div class="text-xs text-emerald-500">IVA incluido</div>
+</div>
+<div class="space-y-2 text-sm">
+<div class="detail-row">
+<span class="detail-label">Proveedor:</span>
+<span class="detail-val">BITS Desarrollo e Ingeniería IT</span>
+</div>
+<div class="detail-row">
+<span class="detail-label">Producto:</span>
+<span class="detail-val">FortiEndpoint Prevent (1 año)</span>
+</div>
+<div class="detail-row">
+<span class="detail-label">Cantidad:</span>
+<span class="detail-val">1,750 Licencias</span>
+</div>
+<div class="detail-row">
+<span class="detail-label">Costo Unitario:</span>
+<span class="detail-val">~$225.79 MXN + IVA</span>
+</div>
+<div class="detail-row">
+<span class="detail-label">Vigencia:</span>
+<span class="detail-val">Anual</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Modal 7 -->
+<div class="modal" id="modal7" onclick="if (event.target == this) closeModal('modal7');">
+<div class="modal-content">
+<div class="close-btn" onclick="closeModal('modal7')">×</div>
+<h2 class="text-xl md:text-2xl font-bold text-white mb-6 pr-10 border-b border-slate-700 pb-2">
           7. Pagos Pendientes
         </h2>
-        <div class="space-y-4">
-          <div
-            class="bg-slate-800 p-4 rounded-lg border-l-4 border-yellow-500 flex justify-between items-center"
-          >
-            <div>
-              <h3 class="font-bold text-white">IPC Services</h3>
-              <p class="text-sm text-slate-400">Pantalla Sala de Juntas</p>
-            </div>
-            <span class="text-yellow-400 font-bold text-lg">$150,867.00</span>
-          </div>
-          <div
-            class="bg-slate-800 p-4 rounded-lg border-l-4 border-yellow-500 flex justify-between items-center"
-          >
-            <div>
-              <h3 class="font-bold text-white">GMB Comunicaciones</h3>
-              <p class="text-sm text-slate-400">Producción Informe 2025</p>
-            </div>
-            <span class="text-yellow-400 font-bold text-lg">$359,600.00</span>
-          </div>
-          <div
-            class="border-t border-slate-600 pt-4 mt-4 flex justify-between items-center"
-          >
-            <span class="text-lg font-bold text-slate-300">Total a Pagar:</span>
-            <span class="text-2xl font-bold text-white">$510,467.00</span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Modal 8 -->
-    <div
-      class="modal"
-      id="modal8"
-      onclick="if (event.target == this) closeModal('modal8');"
-    >
-      <div class="modal-content">
-        <div class="close-btn" onclick="closeModal('modal8')">×</div>
-        <h2
-          class="text-xl md:text-2xl font-bold text-white mb-6 pr-10 border-b border-slate-700 pb-2"
-        >
+<div class="space-y-4">
+<div class="bg-slate-800 p-4 rounded-lg border-l-4 border-yellow-500 flex justify-between items-center">
+<div>
+<h3 class="font-bold text-white">IPC Services</h3>
+<p class="text-sm text-slate-400">Pantalla Sala de Juntas</p>
+</div>
+<span class="text-yellow-400 font-bold text-lg">$150,867.00</span>
+</div>
+<div class="bg-slate-800 p-4 rounded-lg border-l-4 border-yellow-500 flex justify-between items-center">
+<div>
+<h3 class="font-bold text-white">GMB Comunicaciones</h3>
+<p class="text-sm text-slate-400">Producción Informe 2025</p>
+</div>
+<span class="text-yellow-400 font-bold text-lg">$359,600.00</span>
+</div>
+<div class="border-t border-slate-600 pt-4 mt-4 flex justify-between items-center">
+<span class="text-lg font-bold text-slate-300">Total a Pagar:</span>
+<span class="text-2xl font-bold text-white">$510,467.00</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Modal 8 -->
+<div class="modal" id="modal8" onclick="if (event.target == this) closeModal('modal8');">
+<div class="modal-content">
+<div class="close-btn" onclick="closeModal('modal8')">×</div>
+<h2 class="text-xl md:text-2xl font-bold text-white mb-6 pr-10 border-b border-slate-700 pb-2">
           8. Proyecto IA (Clawdia)
         </h2>
-        <div
-          class="p-6 bg-cyan-900/20 rounded-lg border border-cyan-500/30 text-center mb-6"
-        >
-          <div class="text-5xl mb-3 animate-bounce">🦞</div>
-          <h3 class="text-xl font-bold text-white">
+<div class="p-6 bg-cyan-900/20 rounded-lg border border-cyan-500/30 text-center mb-6">
+<div class="text-5xl mb-3 animate-bounce">🦞</div>
+<h3 class="text-xl font-bold text-white">
             Asistente Virtual Institucional
           </h3>
-          <p class="text-cyan-200/60 text-sm mt-1">
+<p class="text-cyan-200/60 text-sm mt-1">
             Automatización • Análisis • Gestión
           </p>
-        </div>
-        <div class="space-y-4 text-slate-300 text-sm">
-          <div class="bg-slate-800 p-4 rounded border border-slate-700">
-            <h4 class="font-bold text-white mb-2">🎯 Concepto</h4>
-            <p>
+</div>
+<div class="space-y-4 text-slate-300 text-sm">
+<div class="bg-slate-800 p-4 rounded border border-slate-700">
+<h4 class="font-bold text-white mb-2">🎯 Concepto</h4>
+<p>
               Implementación de un asistente virtual integral basado en LLMs
               para acceso ágil a información institucional, interacción con
               plataformas internas (Justicia Digital), automatización de
               reportes y soporte a la planeación estratégica.
             </p>
-          </div>
-          <div class="bg-slate-800 p-4 rounded border border-slate-700">
-            <h4 class="font-bold text-white mb-2">
+</div>
+<div class="bg-slate-800 p-4 rounded border border-slate-700">
+<h4 class="font-bold text-white mb-2">
               🚀 Estrategia de Despliegue
             </h4>
-            <ul class="list-disc list-inside space-y-1 pl-2">
-              <li>
-                <strong>Liderazgos:</strong> Asistente personal para directivos.
+<ul class="list-disc list-inside space-y-1 pl-2">
+<li>
+<strong>Liderazgos:</strong> Asistente personal para directivos.
               </li>
-              <li>
-                <strong>Innovación:</strong> Soporte técnico y DevOps
+<li>
+<strong>Innovación:</strong> Soporte técnico y DevOps
                 automatizado.
               </li>
-              <li>
-                <span class="text-cyan-400 font-bold">Piloto Jueces:</span>
+<li>
+<span class="text-cyan-400 font-bold">Piloto Jueces:</span>
                 Herramienta auxiliar para búsqueda de antecedentes,
                 jurisprudencia y redacción de proyectos de acuerdo.
               </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Modal 9 (SAPROJ) -->
-    <div
-      class="modal"
-      id="modal9"
-      onclick="if (event.target == this) closeModal('modal9');"
-    >
-      <div class="modal-content">
-        <div class="close-btn" onclick="closeModal('modal9')">×</div>
-        <h2
-          class="text-xl md:text-2xl font-bold text-white mb-6 pr-10 border-b border-slate-700 pb-2"
-        >
+</ul>
+</div>
+</div>
+</div>
+</div>
+<!-- Modal 9 (SAPROJ) -->
+<div class="modal" id="modal9" onclick="if (event.target == this) closeModal('modal9');">
+<div class="modal-content">
+<div class="close-btn" onclick="closeModal('modal9')">×</div>
+<h2 class="text-xl md:text-2xl font-bold text-white mb-6 pr-10 border-b border-slate-700 pb-2">
           9. Tema SAPROJ
         </h2>
-        <div class="space-y-4 text-sm">
-          <!-- PROS -->
-          <div
-            class="bg-slate-800/50 p-4 rounded border-l-4 border-emerald-500"
-          >
-            <h3 class="font-bold text-white mb-2 flex items-center">
-              <i
-                class="w-4 h-4 mr-2 text-emerald-400"
-                data-lucide="thumbs-up"
-              ></i>
+<div class="space-y-4 text-sm">
+<!-- PROS -->
+<div class="bg-slate-800/50 p-4 rounded border-l-4 border-emerald-500">
+<h3 class="font-bold text-white mb-2 flex items-center">
+<i class="w-4 h-4 mr-2 text-emerald-400" data-lucide="thumbs-up"></i>
               PROS
             </h3>
-            <ul class="list-disc list-inside text-slate-300 space-y-1 pl-2">
-              <li>✅ Validado por equipo <strong>AGS</strong>.</li>
-            </ul>
-          </div>
-          <!-- CONTRAS -->
-          <div class="bg-slate-800/50 p-4 rounded border-l-4 border-red-500">
-            <h3 class="font-bold text-white mb-2 flex items-center">
-              <i
-                class="w-4 h-4 mr-2 text-red-400"
-                data-lucide="thumbs-down"
-              ></i>
+<ul class="list-disc list-inside text-slate-300 space-y-1 pl-2">
+<li>✅ Validado por equipo <strong>AGS</strong>.</li>
+</ul>
+</div>
+<!-- CONTRAS -->
+<div class="bg-slate-800/50 p-4 rounded border-l-4 border-red-500">
+<h3 class="font-bold text-white mb-2 flex items-center">
+<i class="w-4 h-4 mr-2 text-red-400" data-lucide="thumbs-down"></i>
               CONTRAS
             </h3>
-            <ul class="list-disc list-inside text-slate-300 space-y-1 pl-2">
-              <li>
+<ul class="list-disc list-inside text-slate-300 space-y-1 pl-2">
+<li>
                 ⚠️ <strong>Resistencia Interna:</strong> Alta probabilidad de
                 rechazo y sentimientos negativos por parte del
                 <strong>Team Desarrollo</strong>.
               </li>
-              <li>
+<li>
                 ⚠️ <strong>Riesgo Reputacional:</strong> Antecedentes mediáticos
                 negativos a la primer búsqueda (desvío de 30 millones de pesos
                 en Yucatán).
               </li>
-            </ul>
-          </div>
-          <!-- DUDAS -->
-          <div class="bg-slate-800/50 p-4 rounded border-l-4 border-yellow-500">
-            <h3 class="font-bold text-white mb-2 flex items-center">
-              <i
-                class="w-4 h-4 mr-2 text-yellow-400"
-                data-lucide="help-circle"
-              ></i>
+</ul>
+</div>
+<!-- DUDAS -->
+<div class="bg-slate-800/50 p-4 rounded border-l-4 border-yellow-500">
+<h3 class="font-bold text-white mb-2 flex items-center">
+<i class="w-4 h-4 mr-2 text-yellow-400" data-lucide="help-circle"></i>
               DUDAS
             </h3>
-            <ul class="list-disc list-inside text-slate-300 space-y-1 pl-2">
-              <li>❓ <strong>Costos e Infraestructura.</strong></li>
-              <li>
+<ul class="list-disc list-inside text-slate-300 space-y-1 pl-2">
+<li>❓ <strong>Costos e Infraestructura.</strong></li>
+<li>
                 ❓ <strong>Interoperabilidad:</strong> ¿Cómo se integra con el
                 ecosistema actual? (SAJI, SAGA, PW, Firma E).
               </li>
-            </ul>
-          </div>
-          <!-- DEFINICIONES -->
-          <div class="bg-slate-900 p-4 rounded border border-slate-700 mt-4">
-            <h3
-              class="font-bold text-blue-400 mb-3 flex items-center uppercase tracking-wide text-xs"
-            >
-              <i class="w-4 h-4 mr-2" data-lucide="compass"></i> Definiciones
+</ul>
+</div>
+<!-- DEFINICIONES -->
+<div class="bg-slate-900 p-4 rounded border border-slate-700 mt-4">
+<h3 class="font-bold text-blue-400 mb-3 flex items-center uppercase tracking-wide text-xs">
+<i class="w-4 h-4 mr-2" data-lucide="compass"></i> Definiciones
               Estratégicas
             </h3>
-            <p class="text-slate-300 mb-2 font-medium">
+<p class="text-slate-300 mb-2 font-medium">
               ¿Cómo trabajar con ellos bajo estas premisas?
             </p>
-            <ul
-              class="grid grid-cols-1 md:grid-cols-2 gap-2 text-xs text-slate-400"
-            >
-              <li class="flex items-center gap-2">
-                <span class="text-emerald-500">✔</span> Ahorro en tiempos.
+<ul class="grid grid-cols-1 md:grid-cols-2 gap-2 text-xs text-slate-400">
+<li class="flex items-center gap-2">
+<span class="text-emerald-500">✔</span> Ahorro en tiempos.
               </li>
-              <li class="flex items-center gap-2">
-                <span class="text-emerald-500">✔</span> Cuidar proceso
+<li class="flex items-center gap-2">
+<span class="text-emerald-500">✔</span> Cuidar proceso
                 licitatorio.
               </li>
-              <li class="flex items-center gap-2">
-                <span class="text-emerald-500">✔</span> No empalme con equipo
+<li class="flex items-center gap-2">
+<span class="text-emerald-500">✔</span> No empalme con equipo
                 interno.
               </li>
-              <li class="flex items-center gap-2">
-                <span class="text-emerald-500">✔</span> Plan de respuesta
+<li class="flex items-center gap-2">
+<span class="text-emerald-500">✔</span> Plan de respuesta
                 mediática.
               </li>
-              <li class="flex items-center gap-2 md:col-span-2">
-                <span class="text-emerald-500">✔</span> Cuidar impacto
+<li class="flex items-center gap-2 md:col-span-2">
+<span class="text-emerald-500">✔</span> Cuidar impacto
                 presupuestal y ROI.
               </li>
-            </ul>
-          </div>
-          <!-- RUTA SUGERIDA -->
-          <div
-            class="bg-blue-900/30 p-4 rounded border-l-4 border-blue-500 mt-4"
-          >
-            <h3
-              class="font-bold text-white mb-2 flex items-center text-xs uppercase tracking-wide"
-            >
-              <i class="w-4 h-4 mr-2 text-blue-400" data-lucide="map"></i> Ruta
+</ul>
+</div>
+<!-- RUTA SUGERIDA -->
+<div class="bg-blue-900/30 p-4 rounded border-l-4 border-blue-500 mt-4">
+<h3 class="font-bold text-white mb-2 flex items-center text-xs uppercase tracking-wide">
+<i class="w-4 h-4 mr-2 text-blue-400" data-lucide="map"></i> Ruta
               Sugerida
             </h3>
-            <p class="text-slate-300 text-sm">
+<p class="text-slate-300 text-sm">
               Dirigir los esfuerzos prioritariamente en la
               <strong>materia penal</strong> y/o evaluar la contratación de
               desarrollo personalizado bajo esquema
               <strong>"a destajo"</strong> para mayor control de entregables y
               costos.
             </p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Modal 10 (Mejora Dev Team) -->
-    <div
-      class="modal"
-      id="modal10"
-      onclick="if (event.target == this) closeModal('modal10');"
-    >
-      <div class="modal-content">
-        <div class="close-btn" onclick="closeModal('modal10')">×</div>
-        <h2
-          class="text-xl md:text-2xl font-bold text-white mb-6 pr-10 border-b border-slate-700 pb-2"
-        >
+</div>
+</div>
+</div>
+</div>
+<!-- Modal 10 (Mejora Dev Team) -->
+<div class="modal" id="modal10" onclick="if (event.target == this) closeModal('modal10');">
+<div class="modal-content">
+<div class="close-btn" onclick="closeModal('modal10')">×</div>
+<h2 class="text-xl md:text-2xl font-bold text-white mb-6 pr-10 border-b border-slate-700 pb-2">
           10. Mejora Dev Team
         </h2>
-        <div class="space-y-4 text-sm">
-          <!-- Contexto -->
-          <div
-            class="bg-slate-800 p-4 rounded border border-slate-700"
-          >
-            <h3 class="font-bold text-white mb-2 flex items-center">
-              <i
-                class="w-4 h-4 mr-2 text-indigo-400"
-                data-lucide="info"
-              ></i>
+<div class="space-y-4 text-sm">
+<!-- Contexto -->
+<div class="bg-slate-800 p-4 rounded border border-slate-700">
+<h3 class="font-bold text-white mb-2 flex items-center">
+<i class="w-4 h-4 mr-2 text-indigo-400" data-lucide="info"></i>
               Contexto
             </h3>
-            <p class="text-slate-300 text-sm mb-2">
+<p class="text-slate-300 text-sm mb-2">
               Desde el ingreso al PJ no ha habido incrementos significativos para el equipo de desarrollo, contrastando con el aumento en demanda y responsabilidad.
             </p>
-            <p class="text-slate-300 text-sm">
+<p class="text-slate-300 text-sm">
               El acompañamiento en nuevos despliegues ha sido insuficiente (salvo excepción en juzgados hipotecarios).
             </p>
-          </div>
-
-          <!-- Propuesta -->
-          <div class="bg-indigo-900/20 p-4 rounded border border-indigo-500/30">
-            <h3 class="font-bold text-white mb-3 flex items-center">
-              <i
-                class="w-4 h-4 mr-2 text-indigo-400"
-                data-lucide="trending-up"
-              ></i>
+</div>
+<!-- Propuesta -->
+<div class="bg-indigo-900/20 p-4 rounded border border-indigo-500/30">
+<h3 class="font-bold text-white mb-3 flex items-center">
+<i class="w-4 h-4 mr-2 text-indigo-400" data-lucide="trending-up"></i>
               Propuesta de Mejora
             </h3>
-            
-            <div class="mb-4">
-              <h4 class="font-semibold text-indigo-300 text-xs uppercase mb-2">Opción A: Ajuste Tabulador (Mensual Libre)</h4>
-              <ul class="space-y-2">
-                <li class="flex justify-between items-center border-b border-indigo-500/20 pb-1">
-                  <span class="text-slate-300">Senior Dev</span>
-                  <span class="font-bold text-white">$40,000</span>
-                </li>
-                <li class="flex justify-between items-center border-b border-indigo-500/20 pb-1">
-                  <span class="text-slate-300">Junior Dev</span>
-                  <span class="font-bold text-white">$30,000</span>
-                </li>
-                <li class="flex justify-between items-center border-b border-indigo-500/20 pb-1">
-                  <span class="text-slate-300">Nuevo Ingreso</span>
-                  <span class="font-bold text-white">$20,000</span>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <h4 class="font-semibold text-indigo-300 text-xs uppercase mb-2">Opción B: Esquema Alterno</h4>
-              <p class="text-slate-300 text-sm">
+<div class="mb-4">
+<h4 class="font-semibold text-indigo-300 text-xs uppercase mb-2">Opción A: Ajuste Tabulador (Mensual Libre)</h4>
+<ul class="space-y-2">
+<li class="flex justify-between items-center border-b border-indigo-500/20 pb-1">
+<span class="text-slate-300">Senior Dev</span>
+<span class="font-bold text-white">$40,000</span>
+</li>
+<li class="flex justify-between items-center border-b border-indigo-500/20 pb-1">
+<span class="text-slate-300">Junior Dev</span>
+<span class="font-bold text-white">$30,000</span>
+</li>
+<li class="flex justify-between items-center border-b border-indigo-500/20 pb-1">
+<span class="text-slate-300">Nuevo Ingreso</span>
+<span class="font-bold text-white">$20,000</span>
+</li>
+</ul>
+</div>
+<div>
+<h4 class="font-semibold text-indigo-300 text-xs uppercase mb-2">Opción B: Esquema Alterno</h4>
+<p class="text-slate-300 text-sm">
                 Implementar programa de estímulos por vía alterna (pago contra resultados/entregables).
               </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Modal 11 (Adquisición Equipos) -->
-    <div
-      class="modal"
-      id="modal11"
-      onclick="if (event.target == this) closeModal('modal11');"
-    >
-      <div class="modal-content">
-        <div class="close-btn" onclick="closeModal('modal11')">×</div>
-        <h2
-          class="text-xl md:text-2xl font-bold text-white mb-6 pr-10 border-b border-slate-700 pb-2"
-        >
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Modal 11 (Adquisición Equipos) -->
+<div class="modal" id="modal11" onclick="if (event.target == this) closeModal('modal11');">
+<div class="modal-content">
+<div class="close-btn" onclick="closeModal('modal11')">×</div>
+<h2 class="text-xl md:text-2xl font-bold text-white mb-6 pr-10 border-b border-slate-700 pb-2">
           11. Adquisición de Equipos de Cómputo
         </h2>
-        <div class="space-y-4 text-sm">
-          <div class="bg-slate-800 p-4 rounded border border-slate-700">
-            <h3 class="font-bold text-white mb-2 flex items-center">
-              <i class="w-4 h-4 mr-2 text-blue-400" data-lucide="activity"></i>
+<div class="space-y-4 text-sm">
+<div class="bg-slate-800 p-4 rounded border border-slate-700">
+<h3 class="font-bold text-white mb-2 flex items-center">
+<i class="w-4 h-4 mr-2 text-blue-400" data-lucide="activity"></i>
               Acciones Inmediatas
             </h3>
-            <ul class="list-disc list-inside text-slate-300 space-y-2 pl-2">
-              <li>
-                <strong>Tocar base con proveedor:</strong> Gestionar estatus de entrega/cotización.
+<ul class="list-disc list-inside text-slate-300 space-y-2 pl-2">
+<li>
+<strong>Tocar base con proveedor:</strong> Gestionar estatus de entrega/cotización.
               </li>
-              <li>
-                <strong>Equipamiento:</strong> Laptops y Docks (Vinculado a Puntos 2 y 3).
+<li>
+<strong>Equipamiento:</strong> Laptops y Docks (Vinculado a Puntos 2 y 3).
               </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-    <script>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<script>
       // Init Icons
       lucide.createIcons();
 
@@ -1456,5 +1110,5 @@
         }
       });
     </script>
-  </body>
+</body>
 </html>
