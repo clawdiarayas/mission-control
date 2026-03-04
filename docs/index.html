@@ -35,7 +35,12 @@
         @keyframes slideIn { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 
         .close-btn { position: absolute; top: 1rem; right: 1rem; background: #334155; color: #fff; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; cursor: pointer; }
-    </style>
+    
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      .section { display: none; }
+      .section.active { display: block !important; opacity: 1; }
+</style>
 </head>
 <body class="min-h-screen">
 <div class="fixed top-0 w-full bg-slate-900/90 backdrop-blur-md border-b border-slate-700 z-50">
@@ -325,7 +330,7 @@
         if (target) { target.style.display = "block"; setTimeout(() => target.classList.add("active"), 10); }
         const btn = document.getElementById("btn-" + tabId);
         if (btn) {
-            btn.classList.add("active");
+            btn.classList.add("active"); btn.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
             btn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
         }
     }
